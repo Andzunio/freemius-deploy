@@ -2,7 +2,10 @@ FROM php:8.2-cli
 
 # install git
 RUN apt-get update
-RUN apt-get install -y git
+RUN rm -rf /var/lib/apt/lists/* \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends git \
+    && rm -rf /var/lib/apt/lists/*
 
 
 ARG file_name
